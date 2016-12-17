@@ -1,0 +1,22 @@
+{
+  "name": "checkpoint-2-string-class",
+  "version": "1.0.0",
+  "description": "Am extension of the Native String class functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/*.* --compilers js:babel/register"
+  },
+  "keywords": [
+    "string",
+    "prototype"
+  ],
+  "author": "Uyiosa Enabulele",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.21.0",
+    "babel-preset-es2015": "^6.18.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
