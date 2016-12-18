@@ -47,6 +47,15 @@ const stringClassExtension = {
     return /\?$/.test(this);
   },
 
+  /**
+   * words - Returns an array of the words in a string
+   *
+   * @returns {Array} The words in the string
+   */
+  words() {
+    return this.match(/(?!\d)(\w+)/g);
+  }
+
 
 
 }
