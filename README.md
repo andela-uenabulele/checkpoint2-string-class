@@ -11,6 +11,6 @@ Extends the default javascript string class to support more string manipulations
 ## Run Test
 1. Run test: `npm test`
 
-# Limitations of the App
+## Limitations of the App
 1. The app does not have a FrontEnd
 2. It assumes a basic understanding of Javascript
