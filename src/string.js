@@ -74,6 +74,19 @@ const stringClassExtension = {
     return Number(this.replace(/[^0-9]/g, ''));
   },
 
+  /**
+   * inverseCase - Convert each letter of the String to an inverse case
+   * i.e coverts uppercase letters to lowercase and vice versa
+   * e.g Boy to bOY
+   * @returns {String} the inversecase representation of the input string
+   */
+  inverseCase() {
+    return this.replace(/\w/g, letter => {
+      if (/[a-z]/.test(letter)) return letter.toUpper();
+      return letter.toLower();
+    });
+  }
+
 
 
 }
