@@ -131,6 +131,15 @@ const stringClassExtension = {
       'ten'
     ];
     return this.replace(/\d/g, letter => `${wordAlt[letter]} `).trim()
+  },
+
+  /**
+   * isDigit - Checks if input is a Digit
+   *
+   * @returns {boolean} true if input is a digit
+   */
+  isDigit() {
+    return /^\d{1}$/.test(this);
   }
 
 
