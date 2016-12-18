@@ -66,6 +66,26 @@ const stringClassExtension = {
   },
 
   /**
+   * toCurrency - Converts a String with valid Format to a currency
+   *
+   * @returns {String} A String in currency format or an error message
+   */
+  toCurrency() {
+    let amount = this;
+    if (/([^\d\.])/.test(this)) {
+      return 'Invalid Input!'
+    }
+
+    if (!/\./.test(this)) {
+      amount = `${this}.00`;
+    }
+
+    amount = amount.split('.');
+    amount[0] = amount[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    return `${amount[0]}.${amount[1].substr(0,2)}`;
+  },
+
+  /**
    * fromCurrency - Converts a currency formatted string to it Number value
    *
    * @returns {Number} the number representation to the input currency

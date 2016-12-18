@@ -1,4 +1,3 @@
-const mocha = require('mocha');
 const chai = require('chai');
 const should = chai.should();
 require('../src/string');
