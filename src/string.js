@@ -111,6 +111,28 @@ const stringClassExtension = {
     return this.substr(midPoint - 1, 2);
   },
 
+  /**
+   * numberWords - Returns each digit of input in words delimited by space
+   *
+   * @returns {String} each Digit in words
+   */
+  numberWords() {
+    let wordAlt = [
+      'zero',
+      'one',
+      'two',
+      'three',
+      'four',
+      'five',
+      'six',
+      'seven',
+      'eight',
+      'nine',
+      'ten'
+    ];
+    return this.replace(/\d/g, letter => `${wordAlt[letter]} `).trim()
+  }
+
 
 
 }
