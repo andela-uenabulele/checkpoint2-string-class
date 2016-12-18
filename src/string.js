@@ -38,6 +38,15 @@ const stringClassExtension = {
     return this.replace(/[a-z]/, letter => letter.toUpper());
   },
 
+  /**
+   * isQuestion - Checks if input ends with a '?'
+   *
+   * @returns {boolean} true if it is a question
+   */
+  isQuestion() {
+    return /\?$/.test(this);
+  },
+
 
 
 }
