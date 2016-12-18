@@ -98,7 +98,18 @@ const stringClassExtension = {
       if (index % 2 == 0) return letter.toLower();
       return letter.toUpper();
     });
-  }
+  },
+
+  /**
+   * getMiddle - Gets the Middle character of a String
+   *
+   * @returns {String} the middle character(s) of the input string
+   */
+  getMiddle() {
+    const midPoint = Math.floor(this.length / 2);
+    if (this.length % 2) return this.substr(midPoint, 1)
+    return this.substr(midPoint - 1, 2);
+  },
 
 
 
