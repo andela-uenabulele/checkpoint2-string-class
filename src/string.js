@@ -85,6 +85,19 @@ const stringClassExtension = {
       if (/[a-z]/.test(letter)) return letter.toUpper();
       return letter.toLower();
     });
+  },
+
+  /**
+   * alternatingCase - Converts the input String to an alternating case string
+   * It ensures to start with a lowercase string
+   * e.g Onomatopoeia is converted to oNoMaToPoEiA
+   * @returns {String} an alternating case representative of the string
+   */
+  alternatingCase() {
+    return this.replace(/\w/g, (letter, index) => {
+      if (index % 2 == 0) return letter.toLower();
+      return letter.toUpper();
+    });
   }
 
 
