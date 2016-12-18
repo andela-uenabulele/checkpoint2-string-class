@@ -140,9 +140,17 @@ const stringClassExtension = {
    */
   isDigit() {
     return /^\d{1}$/.test(this);
+  },
+
+  /**
+   * doubleCheck - Checks if a string contains double characters
+   * (including whitespace character)
+   *
+   * @returns {boolean} true if string contains double characters
+   */
+  doubleCheck() {
+    return /(.)\1{1}/.test(this);
   }
-
-
 
 }
 /**
