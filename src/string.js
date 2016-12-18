@@ -29,6 +29,15 @@ const stringClassExtension = {
       String.fromCharCode(letter.charCodeAt() + 32))
   },
 
+  /**
+   * ucFirst - Converts the First Letter
+   *
+   * @returns {String} with the first letter capitalized
+   */
+  ucFirst() {
+    return this.replace(/[a-z]/, letter => letter.toUpper());
+  },
+
 
 
 }
