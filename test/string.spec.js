@@ -36,7 +36,7 @@ describe('String Class Extension', () => {
       'HELLO WORLD'.toLower().should.equal('hello world')
     });
     it('should convert each letter to lowercase for mixed case words"', () => {
-      'heLlO wOrlD'.toUpper().should.equal('hello world')
+      'heLlO wOrlD'.toLower().should.equal('hello world')
     });
   });
 
@@ -47,6 +47,10 @@ describe('String Class Extension', () => {
     it('should convert the first character to upper case', () => {
       'hello world'.ucFirst().should.equal('Hello world');
       'heLLo wOrld'.ucFirst().should.equal('HeLLo wOrld');
+    });
+    it('should convert the first word character to upper case', () => {
+      '?hello world'.ucFirst().should.equal('?Hello world');
+      '123heLLo wOrld'.ucFirst().should.equal('123HeLLo wOrld');
     });
   });
 
@@ -68,13 +72,13 @@ describe('String Class Extension', () => {
 
   describe('words', () => {
     it('should return an Object', () => {
-      'The name of the awesome Lord be praised'.words().should.be.an('Object');
+      (typeof 'The name of the awesome Lord be praised'.words()).should.equal('object');
     });
     it('should return an instance of an array', () => {
       'Today is a public Holiday'.words().should.be.an('array');
     });
-    it('should return an array of each word when give a sentence', () => {
-      'Today is a public holiday'.words().should.equal(['Today','is','a','public','holiday']);
+    it('should return an array containing each word when given a sentence', () => {
+      'Today is a public holiday'.words().should.eql([ 'Today', 'is', 'a', 'public', 'holiday' ]);
     });
   });
 
@@ -101,7 +105,7 @@ describe('String Class Extension', () => {
       '1,111.11'.fromCurrency().should.be.a('Number');
     });
     it('should return the number representation of a currency string', () => {
-      '1,111.11'.isQuestion().should.equal(111111);
+      '1,111.11'.fromCurrency().should.equal(111111);
     });
   });
 
@@ -164,10 +168,10 @@ describe('String Class Extension', () => {
       'reader'.doubleCheck().should.be.a('boolean');
     });
     it('should return †rue if string contains double characters', () => {
-      'reader'.doubleCheck().should.be.true;
+      'grool'.doubleCheck().should.be.true;
     });
     it('should return true if string contains double whitespace', () => {
-      'read it now'.doubleCheck().should.be.true;
+      'read it  now'.doubleCheck().should.be.true;
     });
   });
 
