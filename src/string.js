@@ -9,6 +9,17 @@ const stringClassExtension = {
     return /[aeiou]/.test(this);
   },
 
+  /**
+   * toUpper - Converts input string to uppercase
+   *
+   * @returns {string} The uppercase representation of the input string
+   */
+  toUpper() {
+    return this.replace(/[a-z]/g, letter =>
+      String.fromCharCode(letter.charCodeAt() - 32));
+  },
+
+
 }
 /**
  * Appends the created variable to the String Prototype
