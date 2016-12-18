@@ -19,6 +19,17 @@ const stringClassExtension = {
       String.fromCharCode(letter.charCodeAt() - 32));
   },
 
+  /**
+   * toLower - Converts input string to lowercase
+   *
+   * @returns {String} The lowercase representation of the input string
+   */
+  toLower() {
+    return this.replace(/[A-Z]/g, letter =>
+      String.fromCharCode(letter.charCodeAt() + 32))
+  },
+
+
 
 }
 /**
