@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const chai = require('chai');
 const should = chai.should();
 require('../src/string');
