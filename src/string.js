@@ -63,7 +63,16 @@ const stringClassExtension = {
    */
   wordCount() {
     return this.words().length;
-  }
+  },
+
+  /**
+   * fromCurrency - Converts a currency formatted string to it Number value
+   *
+   * @returns {Number} the number representation to the input currency
+   */
+  fromCurrency() {
+    return Number(this.replace(/[^0-9]/g, ''));
+  },
 
 
 
