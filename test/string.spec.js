@@ -26,6 +26,9 @@ describe('String Class Extension', () => {
     it('should covert each letter to uppercase for mixed case words', () => {
       'HEllO andEla'.toUpper().should.equal('HELLO ANDELA')
     });
+    it('should not utilize the toUpperCase method', () => {
+      String('HEllO andEla'.toUpper).should.not.have.string('toUpperCase')
+    });
   });
 
   describe('toLower', () => {
@@ -37,6 +40,9 @@ describe('String Class Extension', () => {
     });
     it('should convert each letter to lowercase for mixed case words"', () => {
       'heLlO wOrlD'.toLower().should.equal('hello world')
+    });
+    it('should not utilize the toLowerCase method', () => {
+      String('HEllO andEla'.toLower).should.not.have.string('toLowerCase')
     });
   });
 
@@ -51,6 +57,9 @@ describe('String Class Extension', () => {
     it('should convert the first word character to upper case', () => {
       '?hello world'.ucFirst().should.equal('?Hello world');
       '123heLLo wOrld'.ucFirst().should.equal('123HeLLo wOrld');
+    });
+    it('should utilize the toUpper method', () => {
+      String('hellO andEla'.ucFirst).should.have.string('toUpper')
     });
   });
 
@@ -89,11 +98,20 @@ describe('String Class Extension', () => {
     it('should return the number of words in a string', () => {
       'Today is a public Holiday'.wordCount().should.equal(5);
     });
+    it('should utilize the words method', () => {
+      String('HEllO andEla'.wordCount).should.have.string('words')
+    });
   });
 
   describe('toCurrency', () => {
     it('should return a String', () => {
       '1111.11'.toCurrency().should.be.a('string');
+    });
+    it('should return an error message for invalid input', ()=>{
+      '111s1.11'.toCurrency().should.equal('Invalid Input!');
+    });
+    it('should return the currency representation of a string without a "."', () => {
+      '111511'.toCurrency().should.equal('111,511.00');
     });
     it('should return the currency representation of a string', () => {
       '1111.11'.toCurrency().should.equal('1,111.11');
