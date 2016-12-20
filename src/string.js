@@ -2,16 +2,14 @@ const stringClassExtension = {
 
   /**
    * hasVowels - Test if a string contains a vowel
-   *
    * @returns {boolean} true if string contains vowel
    */
   hasVowels() {
-    return /[aeiou]/.test(this);
+    return /[aeiou]/i.test(this);
   },
 
   /**
    * toUpper - Converts input string to uppercase
-   *
    * @returns {string} The uppercase representation of the input string
    */
   toUpper() {
@@ -21,7 +19,6 @@ const stringClassExtension = {
 
   /**
    * toLower - Converts input string to lowercase
-   *
    * @returns {String} The lowercase representation of the input string
    */
   toLower() {
@@ -31,7 +28,6 @@ const stringClassExtension = {
 
   /**
    * ucFirst - Converts the First Letter
-   *
    * @returns {String} with the first letter capitalized
    */
   ucFirst() {
@@ -40,16 +36,14 @@ const stringClassExtension = {
 
   /**
    * isQuestion - Checks if input ends with a '?'
-   *
    * @returns {boolean} true if it is a question
    */
   isQuestion() {
-    return /\?$/.test(this);
+    return /\?$/.test(this.trim());
   },
 
   /**
    * words - Returns an array of the words in a string
-   *
    * @returns {Array} The words in the string
    */
   words() {
@@ -58,7 +52,6 @@ const stringClassExtension = {
 
   /**
    * wordCount - Counts the number of words in the string
-   *
    * @returns {Number} The number of words in the string
    */
   wordCount() {
@@ -67,27 +60,26 @@ const stringClassExtension = {
 
   /**
    * toCurrency - Converts a String with valid Format to a currency
-   *
    * @returns {String} A String in currency format or an error message
    */
   toCurrency() {
-    let amount = this;
+    let inputValue = this;
     if (/([^\d\.])/.test(this)) {
       return 'Invalid Input!'
     }
 
     if (!/\./.test(this)) {
-      amount = `${this}.00`;
+      inputValue = `${this}.00`;
     }
 
-    amount = amount.split('.');
-    amount[0] = amount[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    return `${amount[0]}.${amount[1].substr(0,2)}`;
+    roundedValue = Number(inputValue).toFixed(2);
+    [amount, mantissa] = roundedValue.split('.');
+    amount = amount.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    return `${amount}.${mantissa}`;
   },
 
   /**
-   * fromCurrency - Converts a currency formatted string to it Number value
-   *
+   * fromCurrency - Converts a currency formatted string to it's Number value
    * @returns {Number} the number representation to the input currency
    */
   fromCurrency() {
@@ -122,7 +114,6 @@ const stringClassExtension = {
 
   /**
    * getMiddle - Gets the Middle character of a String
-   *
    * @returns {String} the middle character(s) of the input string
    */
   getMiddle() {
@@ -133,7 +124,6 @@ const stringClassExtension = {
 
   /**
    * numberWords - Returns each digit of input in words delimited by space
-   *
    * @returns {String} each Digit in words
    */
   numberWords() {
@@ -155,7 +145,6 @@ const stringClassExtension = {
 
   /**
    * isDigit - Checks if input is a Digit
-   *
    * @returns {boolean} true if input is a digit
    */
   isDigit() {
@@ -165,7 +154,6 @@ const stringClassExtension = {
   /**
    * doubleCheck - Checks if a string contains double characters
    * (including whitespace character)
-   *
    * @returns {boolean} true if string contains double characters
    */
   doubleCheck() {
@@ -177,3 +165,6 @@ const stringClassExtension = {
  * Appends the created variable to the String Prototype
  */
 Object.assign(String.prototype, stringClassExtension);
+console.log("hdjA".hasVowels());
+console.log("I have 1,000,000 dollars       i%^n 10 accounts".words());
+console.log("125544.865454".toCurrency());

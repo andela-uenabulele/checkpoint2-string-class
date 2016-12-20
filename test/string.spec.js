@@ -6,25 +6,29 @@ require('../src/string');
 describe('String Class Extension', () => {
   describe('hasVowels', () => {
     it('should return a boolean', () => {
-      "John".hasVowels().should.be.a('boolean');
+      'John'.hasVowels().should.be.a('boolean');
     });
-    it('should return true for "Hello World"', () => {
-      "Hello World".hasVowels().should.be.true;
+    it('should return true for words with vowel letters', () => {
+      'Hello World'.hasVowels().should.be.true;
+      'HELLO World'.hasVowels().should.be.true;
     });
-    it('should return false for "Fjzz Bvzz"', () => {
+    it('should return false for words without vowel letters', () => {
       'Fjzz Bvzz'.hasVowels().should.be.false;
     });
   });
 
   describe('toUpper', () => {
     it('should return a String', () => {
-      "Hello World".toUpper().should.be.a('String');
+      'Hello World'.toUpper().should.be.a('String');
     });
     it('should covert each letter to uppercase', () => {
       'hello world'.toUpper().should.equal('HELLO WORLD')
     });
     it('should covert each letter to uppercase for mixed case words', () => {
       'HEllO andEla'.toUpper().should.equal('HELLO ANDELA')
+    });
+    it('should properly handle symbols', () => {
+      'HE*$?llO andEla'.toUpper().should.equal('HE*$?LLO ANDELA')
     });
     it('should not utilize the toUpperCase method', () => {
       String('HEllO andEla'.toUpper).should.not.have.string('toUpperCase')
@@ -70,6 +74,9 @@ describe('String Class Extension', () => {
     it('should return true if a string ends with a question mark(?)', () => {
       'Is today a public Holiday?'.isQuestion().should.be.true;
     });
+    it('should return true if a string ends with a question mark(?) with trailing whitespaces', () => {
+      'Is today a public Holiday?  '.isQuestion().should.be.true;
+    });
     it('should return false if a string doesn\'t end with a question mark(?)', () => {
       'Today is a public Holiday'.isQuestion().should.be.false;
     });
@@ -112,6 +119,10 @@ describe('String Class Extension', () => {
     });
     it('should return the currency representation of a string without a "."', () => {
       '111511'.toCurrency().should.equal('111,511.00');
+    });
+    it('should return the correct approximation', () => {
+      '111511.2345'.toCurrency().should.equal('111,511.23');
+      '111511.2355'.toCurrency().should.equal('111,511.24');
     });
     it('should return the currency representation of a string', () => {
       '1111.11'.toCurrency().should.equal('1,111.11');
@@ -187,6 +198,9 @@ describe('String Class Extension', () => {
     });
     it('should return †rue if string contains double characters', () => {
       'grool'.doubleCheck().should.be.true;
+    });
+    it('should return false if string doesn\'t contains double characters', () => {
+      'grow'.doubleCheck().should.be.false;
     });
     it('should return true if string contains double whitespace', () => {
       'read it  now'.doubleCheck().should.be.true;
