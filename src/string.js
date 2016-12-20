@@ -165,6 +165,3 @@ const stringClassExtension = {
  * Appends the created variable to the String Prototype
  */
 Object.assign(String.prototype, stringClassExtension);
-console.log("hdjA".hasVowels());
-console.log("I have 1,000,000 dollars       i%^n 10 accounts".words());
-console.log("125544.865454".toCurrency());
