@@ -64,6 +64,9 @@ const stringClassExtension = {
    */
   toCurrency() {
     let inputValue = this;
+    let roundedValue;
+    let [amount, mantissa] = [];
+
     if (/([^\d\.])/.test(this)) {
       return 'Invalid Input!'
     }
