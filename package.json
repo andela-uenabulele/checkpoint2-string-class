@@ -8,7 +8,7 @@
     "test": "mocha test/*.*",
     "cover": "./node_modules/.bin/istanbul cover _mocha test/*.*",
     "coveralls": "npm run cover --captureExceptions test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "postinstall": "node ./node_modules/bower/bin/bower install && gulp bower"
+    "postinstall": "node ./node_modules/bower/bin/bower install && gulp bower && gulp serve-src"
   },
   "keywords": [
     "string",
