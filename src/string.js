@@ -76,9 +76,8 @@ const stringClassExtension = {
     }
 
     if (/^\./.test(inputValue)) {
-      inputValue = `${this}.00`;
+      inputValue = `${inputValue}.00`;
     }
-
 
     roundedValue = Number(inputValue).toFixed(2);
     return roundedValue.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');

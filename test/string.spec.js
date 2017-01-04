@@ -149,7 +149,7 @@ describe('String Class Extension', () => {
     it('should return a String', () => {
       'Mr Ben'.inverseCase().should.be.a('String');
     });
-    it('should return "heLLO wOrLD" for "HEllo WoEld"', () => {
+    it('should return the inverseCase for an input string', () => {
       'Mr Ben'.inverseCase().should.equal('mR bEN');
     });
     it('should work with symbols within the String', () => {
