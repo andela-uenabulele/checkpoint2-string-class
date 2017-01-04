@@ -36,9 +36,6 @@ gulp.task('run-app', () => {
     },
     port: process.env.PORT || 3400,
     open: true,
-    ui: {
-      port: process.env.PORT || 3800
-    }
   });
 });
 
