@@ -4,9 +4,11 @@
   "description": "Am extension of the Native String class functionality",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.*",
-    "cover": "./node_modules/.bin/istanbul cover _mocha test/*.*",
-    "coveralls": "npm run cover --captureExceptions test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  "start":"gulp",
+  "test": "mocha test/*.*",
+  "cover": "./node_modules/.bin/istanbul cover _mocha test/*.*",
+  "coveralls": "npm run cover --captureExceptions test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+  "postinstall":"bower install && gulp bower"
   },
   "keywords": [
     "string",
