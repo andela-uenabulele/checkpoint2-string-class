@@ -4,11 +4,11 @@
   "description": "Am extension of the Native String class functionality",
   "main": "index.js",
   "scripts": {
-  "start":"gulp",
-  "test": "mocha test/*.*",
-  "cover": "./node_modules/.bin/istanbul cover _mocha test/*.*",
-  "coveralls": "npm run cover --captureExceptions test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-  "postinstall":"bower install && gulp bower"
+    "start": "gulp",
+    "test": "mocha test/*.*",
+    "cover": "./node_modules/.bin/istanbul cover _mocha test/*.*",
+    "coveralls": "npm run cover --captureExceptions test/ && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "postinstall": "node ./node_modules/bower/bin/bower install && gulp bower"
   },
   "keywords": [
     "string",
@@ -16,6 +16,23 @@
   ],
   "author": "Uyiosa Enabulele",
   "license": "GPL-3.0",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.5",
+    "browsersync": "0.0.1-security",
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.15",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-inject": "^4.2.0",
+    "gulp-webpack": "^1.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
+    "path": "^0.12.7",
+    "webpack": "^1.14.0",
+    "wiredep": "^4.0.0"
+  },
   "devDependencies": {
     "browser-sync": "^2.18.5",
     "browsersync": "0.0.1-security",
