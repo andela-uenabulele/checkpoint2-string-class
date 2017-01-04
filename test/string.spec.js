@@ -27,7 +27,7 @@ describe('String Class Extension', () => {
     it('should covert each letter to uppercase for mixed case words', () => {
       'HEllO andEla'.toUpper().should.equal('HELLO ANDELA')
     });
-    it('should properly handle symbols', () => {
+    it('should convert correctly when input contains symbols', () => {
       'HE*$?llO andEla'.toUpper().should.equal('HE*$?LLO ANDELA')
     });
     it('should not utilize the toUpperCase method', () => {
@@ -87,9 +87,6 @@ describe('String Class Extension', () => {
   });
 
   describe('words', () => {
-    it('should return an Object', () => {
-      (typeof 'The name of the awesome Lord be praised'.words()).should.equal('object');
-    });
     it('should return an instance of an array', () => {
       'Today is a public Holiday'.words().should.be.an('array');
     });
