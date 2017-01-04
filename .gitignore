@@ -2,3 +2,6 @@
 .coveralls.yml
 coverage
 npm-debug.log
+bower_components
+public/lib/
+public/string.js
