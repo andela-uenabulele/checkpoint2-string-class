@@ -58,9 +58,9 @@ describe('String Class Extension', () => {
       'hello world'.ucFirst().should.equal('Hello world');
       'heLLo wOrld'.ucFirst().should.equal('HeLLo wOrld');
     });
-    it('should convert the first word character to upper case', () => {
-      '?hello world'.ucFirst().should.equal('?Hello world');
-      '123heLLo wOrld'.ucFirst().should.equal('123HeLLo wOrld');
+    it('should not convert if string start with a special character', () => {
+      '?hello world'.ucFirst().should.equal('?hello world');
+      '123heLLo wOrld'.ucFirst().should.equal('123heLLo wOrld');
     });
     it('should utilize the toUpper method', () => {
       String('hellO andEla'.ucFirst).should.have.string('toUpper')
@@ -97,7 +97,7 @@ describe('String Class Extension', () => {
       "Today is a public holiday".words().should.eql(['Today', 'is', 'a', 'public', 'holiday']);
     });
     it('should return an array containing each word when given a sentence with special Characters', () => {
-      "Today is a public holi-day, isn't it".words().should.eql(['Today', 'is', 'a', 'public', 'holi-day','isn\'t','it']);
+      "Today is a public holi-day, isn't it".words().should.eql(['Today', 'is', 'a', 'public', 'holi-day', 'isn\'t', 'it']);
     });
   });
 
