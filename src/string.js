@@ -1,7 +1,8 @@
 const stringClassExtension = {
 
   /**
-   * hasVowels - Test if a string contains a vowel
+   * hasVowels - Tests if a string contains a vowel
+   * vowels include [a,e,i,o,u]
    * @returns {boolean} true if string contains vowel
    */
   hasVowels() {
@@ -27,7 +28,7 @@ const stringClassExtension = {
   },
 
   /**
-   * ucFirst - Converts the First Letter
+   * ucFirst - Converts the First Letter to uppercase
    * @returns {String} with the first letter capitalized
    */
   ucFirst() {
@@ -47,7 +48,7 @@ const stringClassExtension = {
    * @returns {Array} The words in the string
    */
   words() {
-    return this.match(/(?!\d)(\w+)/g);
+    return this.match(/[\w'-]+/g);
   },
 
   /**
@@ -65,20 +66,22 @@ const stringClassExtension = {
   toCurrency() {
     let inputValue = this;
     let roundedValue;
-    let [amount, mantissa] = [];
 
-    if (/([^\d\.])/.test(this)) {
-      return 'Invalid Input!'
+    if (/\.$/.test(inputValue)) {
+      inputValue = `${this}00`;
     }
 
-    if (!/\./.test(this)) {
+    if (!/^\d+(\.)?\d+$/.test(inputValue)) {
+      return 'Invalid Input!';
+    }
+
+    if (/^\./.test(inputValue)) {
       inputValue = `${this}.00`;
     }
 
+
     roundedValue = Number(inputValue).toFixed(2);
-    [amount, mantissa] = roundedValue.split('.');
-    amount = amount.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-    return `${amount}.${mantissa}`;
+    return roundedValue.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   },
 
   /**
@@ -130,7 +133,7 @@ const stringClassExtension = {
    * @returns {String} each Digit in words
    */
   numberWords() {
-    let wordAlt = [
+    let inWords = [
       'zero',
       'one',
       'two',
@@ -143,7 +146,7 @@ const stringClassExtension = {
       'nine',
       'ten'
     ];
-    return this.replace(/\d/g, letter => `${wordAlt[letter]} `).trim()
+    return this.replace(/\d/g, letter => `${inWords[letter]} `).trim();
   },
 
   /**

@@ -94,7 +94,10 @@ describe('String Class Extension', () => {
       'Today is a public Holiday'.words().should.be.an('array');
     });
     it('should return an array containing each word when given a sentence', () => {
-      'Today is a public holiday'.words().should.eql([ 'Today', 'is', 'a', 'public', 'holiday' ]);
+      "Today is a public holiday".words().should.eql(['Today', 'is', 'a', 'public', 'holiday']);
+    });
+    it('should return an array containing each word when given a sentence with special Characters', () => {
+      "Today is a public holi-day, isn't it".words().should.eql(['Today', 'is', 'a', 'public', 'holi-day','isn\'t','it']);
     });
   });
 
@@ -114,11 +117,15 @@ describe('String Class Extension', () => {
     it('should return a String', () => {
       '1111.11'.toCurrency().should.be.a('string');
     });
-    it('should return an error message for invalid input', ()=>{
-      '111s1.11'.toCurrency().should.equal('Invalid Input!');
+    it('should return an error message for invalid input', () => {
+      '11s11.11'.toCurrency().should.equal('Invalid Input!');
+      '1111.11.11'.toCurrency().should.equal('Invalid Input!');
     });
     it('should return the currency representation of a string without a "."', () => {
       '111511'.toCurrency().should.equal('111,511.00');
+    });
+    it('should return the currency representation of a string that ends in a "."', () => {
+      '112911.'.toCurrency().should.equal('112,911.00');
     });
     it('should return the correct approximation', () => {
       '111511.2345'.toCurrency().should.equal('111,511.23');
