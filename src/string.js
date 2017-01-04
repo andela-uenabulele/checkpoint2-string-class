@@ -75,7 +75,7 @@ const stringClassExtension = {
       return 'Invalid Input!';
     }
 
-    if (/^\./.test(inputValue)) {
+    if (!/[\.]/.test(inputValue)) {
       inputValue = `${inputValue}.00`;
     }
 
