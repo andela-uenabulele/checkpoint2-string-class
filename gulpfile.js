@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const wiredep = require('wiredep').stream;
-const gulpWebpack = require('gulp-webpack');
 const browserSync = require('browser-sync').create();
 const bower = require('gulp-bower');
 

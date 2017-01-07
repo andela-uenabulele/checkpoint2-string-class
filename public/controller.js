@@ -47,111 +47,11 @@ angular.module('stringClass', ['ngMaterial', 'ngTagsInput'])
       $scope.theResults = [];
       $scope.actions.forEach((action) => {
         let label = action.text;
-        switch (label) {
-          case 'hasVowels':
-            $scope.theResults.push({
-              label,
-              value: $scope.stringToConvert.hasVowels()
-            });
-            break;
-          case 'toLower':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toLower(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'hasVowels':
-            $scope.theResults.push({
-              label,
-              value: $scope.stringToConvert.hasVowels()
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          case 'toUpper':
-            $scope.theResults.push({
-              value: $scope.stringToConvert.toUpper(),
-              label
-            });
-            break;
-          default:
-        }
+        let value = eval(`$scope.stringToConvert.${label}()`);
+        $scope.theResults.push({
+          label,
+          value
+        });
       });
     }
 
