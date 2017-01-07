@@ -6,7 +6,8 @@ const stringClassExtension = {
    * @returns {boolean} true if string contains vowel
    */
   hasVowels() {
-    return /[aeiou]/i.test(this);
+    const vowelRegex = /[aeiou]/i;
+    return vowelRegex.test(this);
   },
 
   /**
@@ -14,7 +15,8 @@ const stringClassExtension = {
    * @returns {string} The uppercase representation of the input string
    */
   toUpper() {
-    return this.replace(/[a-z]/g, letter =>
+    const upperRegex = /[a-z]/g;
+    return this.replace(upperRegex, letter =>
       String.fromCharCode(letter.charCodeAt() - 32));
   },
 
@@ -23,7 +25,8 @@ const stringClassExtension = {
    * @returns {String} The lowercase representation of the input string
    */
   toLower() {
-    return this.replace(/[A-Z]/g, letter =>
+    const lowerRegex =/[A-Z]/g;
+    return this.replace(lowerRegex, letter =>
       String.fromCharCode(letter.charCodeAt() + 32))
   },
 
@@ -32,7 +35,8 @@ const stringClassExtension = {
    * @returns {String} with the first letter capitalized
    */
   ucFirst() {
-    return this.replace(/[a-z]/, letter => letter.toUpper());
+    const ucRegex = /^[a-z]/;
+    return this.replace(ucRegex, letter => letter.toUpper());
   },
 
   /**
@@ -40,7 +44,8 @@ const stringClassExtension = {
    * @returns {boolean} true if it is a question
    */
   isQuestion() {
-    return /\?$/.test(this.trim());
+    const isquestionRegex = /\?$/;
+    return isquestionRegex.test(this.trim());
   },
 
   /**
@@ -48,7 +53,8 @@ const stringClassExtension = {
    * @returns {Array} The words in the string
    */
   words() {
-    return this.match(/[\w'-]+/g);
+    const wordsRegex = /[\w'-]+/g;
+    return this.match(wordsRegex);
   },
 
   /**
@@ -64,18 +70,21 @@ const stringClassExtension = {
    * @returns {String} A String in currency format or an error message
    */
   toCurrency() {
+    const validator = /\.$/;
+    const currencyRegex = /^\d+(\.)?\d+$/;
+    const dotCheckerRegex = /[\.]/;
     let inputValue = this;
     let roundedValue;
 
-    if (/\.$/.test(inputValue)) {
+    if (validator.test(inputValue)) {
       inputValue = `${this}00`;
     }
 
-    if (!/^\d+(\.)?\d+$/.test(inputValue)) {
+    if (!currencyRegex.test(inputValue)) {
       return 'Invalid Input!';
     }
 
-    if (/^\./.test(inputValue)) {
+    if (!dotCheckerRegex.test(inputValue)) {
       inputValue = `${inputValue}.00`;
     }
 
@@ -88,7 +97,8 @@ const stringClassExtension = {
    * @returns {Number} the number representation to the input currency
    */
   fromCurrency() {
-    return Number(this.replace(/[^0-9]/g, ''));
+    const fromCurrencyRegex = /[^0-9]/g;
+    return Number(this.replace(fromCurrencyRegex, ''));
   },
 
   /**
@@ -98,8 +108,11 @@ const stringClassExtension = {
    * @returns {String} the inversecase representation of the input string
    */
   inverseCase() {
-    return this.replace(/\w/g, letter => {
-      if (/[a-z]/.test(letter)) return letter.toUpper();
+    const inverseCaseRegex = /\w/g;
+    const lowercaseRegex = /[a-z]/;
+    let inputData = this;
+    return inputData.replace(inverseCaseRegex, letter => {
+      if (lowercaseRegex.test(letter)) return letter.toUpper();
       return letter.toLower();
     });
   },
@@ -111,7 +124,8 @@ const stringClassExtension = {
    * @returns {String} an alternating case representative of the string
    */
   alternatingCase() {
-    return this.replace(/\w/g, (letter, index) => {
+    const alternatingCaseRegex = /\w/g
+    return this.replace(alternatingCaseRegex, (letter, index) => {
       if (index % 2 == 0) return letter.toLower();
       return letter.toUpper();
     });
@@ -132,6 +146,7 @@ const stringClassExtension = {
    * @returns {String} each Digit in words
    */
   numberWords() {
+    const numberWordsRegex = /\d/g;
     let inWords = [
       'zero',
       'one',
@@ -145,7 +160,7 @@ const stringClassExtension = {
       'nine',
       'ten'
     ];
-    return this.replace(/\d/g, letter => `${inWords[letter]} `).trim();
+    return this.replace(numberWordsRegex, letter => `${inWords[letter]} `).trim();
   },
 
   /**
@@ -153,7 +168,8 @@ const stringClassExtension = {
    * @returns {boolean} true if input is a digit
    */
   isDigit() {
-    return /^\d{1}$/.test(this);
+    const isDigitRegex = /^\d{1}$/;
+    return isDigitRegex.test(this);
   },
 
   /**
@@ -162,7 +178,8 @@ const stringClassExtension = {
    * @returns {boolean} true if string contains double characters
    */
   doubleCheck() {
-    return /(.)\1{1}/.test(this);
+    const doubleCheckRegex = /(.)\1{1}/;
+    return doubleCheckRegex.test(this);
   }
 
 }
