@@ -58,10 +58,6 @@ describe('String Class Extension', () => {
       'hello world'.ucFirst().should.equal('Hello world');
       'heLLo wOrld'.ucFirst().should.equal('HeLLo wOrld');
     });
-    it('should convert the first word character to upper case', () => {
-      '?hello world'.ucFirst().should.equal('?Hello world');
-      '123heLLo wOrld'.ucFirst().should.equal('123HeLLo wOrld');
-    });
     it('should utilize the toUpper method', () => {
       String('hellO andEla'.ucFirst).should.have.string('toUpper')
     });
