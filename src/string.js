@@ -53,7 +53,7 @@ const stringClassExtension = {
    * @returns {Array} The words in the string
    */
   words() {
-    const wordsRegex = /[\w'-]+/g;
+    const wordsRegex = new RegExp(/[\w\'-]+/, 'g');
     return this.match(wordsRegex);
   },
 
@@ -98,7 +98,9 @@ const stringClassExtension = {
    */
   fromCurrency() {
     const fromCurrencyRegex = /[^0-9]/g;
-    return Number(this.replace(fromCurrencyRegex, ''));
+    const result = Number(this.replace(fromCurrencyRegex, ''));
+    if (result == 0) return "Invalid Input!"
+    return result;
   },
 
   /**
