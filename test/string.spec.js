@@ -1,213 +1,240 @@
-/* eslint-disable no-unused-vars */
-const chai = require('chai');
-const should = chai.should();
+/* eslint-disable no-unused-vars, no-unused-expressions */
 require('../src/string');
+const chai = require('chai');
+
+const should = chai.should();
+
 
 describe('String Class Extension', () => {
+  const testPhrase = 'hello WOrld';
+  let result;
+
   describe('hasVowels', () => {
     it('should return a boolean', () => {
-      'John'.hasVowels().should.be.a('boolean');
+      'testPhrase'.hasVowels().should.be.a('boolean');
     });
     it('should return true for words with vowel letters', () => {
-      'Hello World'.hasVowels().should.be.true;
-      'HELLO World'.hasVowels().should.be.true;
+      testPhrase.hasVowels().should.be.true;
     });
     it('should return false for words without vowel letters', () => {
-      'Fjzz Bvzz'.hasVowels().should.be.false;
+      const nonVowel = 'Fjzz Bvzz';
+      nonVowel.hasVowels().should.be.false;
     });
   });
 
   describe('toUpper', () => {
     it('should return a String', () => {
-      'Hello World'.toUpper().should.be.a('String');
+      testPhrase.toUpper().should.be.a('String');
     });
     it('should covert each letter to uppercase', () => {
-      'hello world'.toUpper().should.equal('HELLO WORLD')
-    });
-    it('should covert each letter to uppercase for mixed case words', () => {
-      'HEllO andEla'.toUpper().should.equal('HELLO ANDELA')
+      result = 'HELLO WORLD';
+      testPhrase.toUpper().should.equal(result);
     });
     it('should properly handle symbols', () => {
-      'HE*$?llO andEla'.toUpper().should.equal('HE*$?LLO ANDELA')
+      const mixedWords = 'HE*$?llO andEla';
+      result = 'HE*$?LLO ANDELA';
+      mixedWords.toUpper().should.equal(result);
     });
     it('should not utilize the toUpperCase method', () => {
-      String('HEllO andEla'.toUpper).should.not.have.string('toUpperCase')
+      String(testPhrase.toUpper).should.not.have.string('toUpperCase');
     });
   });
 
   describe('toLower', () => {
     it('should return a String', () => {
-      'HELLO WORLD'.toLower().should.be.a('String')
+      testPhrase.toLower().should.be.a('String');
     });
     it('should convert each letter to lowercase', () => {
-      'HELLO WORLD'.toLower().should.equal('hello world')
-    });
-    it('should convert each letter to lowercase for mixed case words"', () => {
-      'heLlO wOrlD'.toLower().should.equal('hello world')
+      result = 'hello world';
+      testPhrase.toLower().should.equal(result);
     });
     it('should not utilize the toLowerCase method', () => {
-      String('HEllO andEla'.toLower).should.not.have.string('toLowerCase')
+      String(testPhrase.toLower).should.not.have.string('toLowerCase');
     });
   });
 
   describe('ucFirst', () => {
     it('should return a String', () => {
-      'hELLo WORLD'.ucFirst().should.be.a('String');
+      testPhrase.ucFirst().should.be.a('String');
     });
     it('should convert the first character to upper case', () => {
-      'hello world'.ucFirst().should.equal('Hello world');
-      'heLLo wOrld'.ucFirst().should.equal('HeLLo wOrld');
+      result = 'Hello WOrld';
+      testPhrase.ucFirst().should.equal(result);
     });
     it('should utilize the toUpper method', () => {
-      String('hellO andEla'.ucFirst).should.have.string('toUpper')
+      String(testPhrase.ucFirst).should.have.string('toUpper');
     });
   });
 
   describe('isQuestion', () => {
+    const question = `${testPhrase} ?`;
+    const questionSpaced = `${testPhrase} ?  `;
+    const questionBetween = `${testPhrase} ? Uyi`;
     it('should return a boolean', () => {
-      'Is today a public Holiday?'.isQuestion().should.be.a('boolean');
+      question.isQuestion().should.be.a('boolean');
     });
     it('should return true if a string ends with a question mark(?)', () => {
-      'Is today a public Holiday?'.isQuestion().should.be.true;
+      question.isQuestion().should.be.true;
     });
-    it('should return true if a string ends with a question mark(?) with trailing whitespaces', () => {
-      'Is today a public Holiday?  '.isQuestion().should.be.true;
+    it('should return true if it the question has trailing whitespaces', () => {
+      questionSpaced.isQuestion().should.be.true;
     });
-    it('should return false if a string doesn\'t end with a question mark(?)', () => {
-      'Today is a public Holiday'.isQuestion().should.be.false;
+    it('should return false if it doesn\'t end with a question mark(?)', () => {
+      testPhrase.isQuestion().should.be.false;
     });
-    it('should return false if a question mark is present but not at the end', () => {
-      'Is today a public ? Holiday'.isQuestion().should.be.false;
-      'Is today a pub?lic Holiday'.isQuestion().should.be.false;
+    it('should return false if a question mark not at the end', () => {
+      questionBetween.isQuestion().should.be.false;
     });
   });
 
   describe('words', () => {
-    it('should return an Object', () => {
-      (typeof 'The name of the awesome Lord be praised'.words()).should.equal('object');
-    });
     it('should return an instance of an array', () => {
-      'Today is a public Holiday'.words().should.be.an('array');
+      testPhrase.words().should.be.an('array');
     });
-    it('should return an array containing each word when given a sentence', () => {
-      "Today is a public holiday".words().should.eql(['Today', 'is', 'a', 'public', 'holiday']);
+    it('should return an array of each word in a string', () => {
+      result = ['hello', 'WOrld'];
+      testPhrase.words().should.eql(result);
     });
-    it('should return an array containing each word when given a sentence with special Characters', () => {
-      "Today is a public holi-day, isn't it".words().should.eql(['Today', 'is', 'a', 'public', 'holi-day','isn\'t','it']);
+    it('should return accurate result with special Characters', () => {
+      const specialWord = `${testPhrase} isn't me lovely`;
+      result = ['hello', 'WOrld', 'isn\'t', 'me', 'lovely'];
+      specialWord.words().should.eql(result);
     });
   });
 
   describe('wordCount', () => {
     it('should return a Number', () => {
-      'Today is a public Holiday'.wordCount().should.be.a('Number');
+      testPhrase.wordCount().should.be.a('Number');
     });
     it('should return the number of words in a string', () => {
-      'Today is a public Holiday'.wordCount().should.equal(5);
+      testPhrase.wordCount().should.equal(2);
     });
     it('should utilize the words method', () => {
-      String('HEllO andEla'.wordCount).should.have.string('words')
+      String(testPhrase.wordCount).should.have.string('words');
     });
   });
 
   describe('toCurrency', () => {
+    let currency;
     it('should return a String', () => {
-      '1111.11'.toCurrency().should.be.a('string');
+      currency = '123456.789';
+      currency.toCurrency().should.be.a('string');
     });
     it('should return an error message for invalid input', () => {
-      '11s11.11'.toCurrency().should.equal('Invalid Input!');
-      '1111.11.11'.toCurrency().should.equal('Invalid Input!');
+      currency = ['11s11.11', '1111.11.11'];
+      result = '111,511.00';
+      currency[0].toCurrency().should.equal('Invalid Input!');
+      currency[1].toCurrency().should.equal('Invalid Input!');
     });
-    it('should return the currency representation of a string without a "."', () => {
-      '111511'.toCurrency().should.equal('111,511.00');
+    it('should return the currency value of a string without a "."', () => {
+      currency = '111511';
+      result = '111,511.00';
+      currency.toCurrency().should.equal(result);
     });
-    it('should return the currency representation of a string that ends in a "."', () => {
-      '112911.'.toCurrency().should.equal('112,911.00');
+    it('should return the currency value for a string that ends in "."', () => {
+      currency = '112911.';
+      result = '112,911.00';
+      currency.toCurrency().should.equal(result);
     });
     it('should return the correct approximation', () => {
-      '111511.2345'.toCurrency().should.equal('111,511.23');
-      '111511.2355'.toCurrency().should.equal('111,511.24');
-    });
-    it('should return the currency representation of a string', () => {
-      '1111.11'.toCurrency().should.equal('1,111.11');
+      currency = ['111511.2345', '111511.2355'];
+      result = ['111,511.23', '111,511.24'];
+      currency[0].toCurrency().should.equal(result[0]);
+      currency[1].toCurrency().should.equal(result[1]);
     });
   });
 
   describe('fromCurrency', () => {
+    const inputCurrency = '1,111.11';
     it('should return a Number', () => {
-      '1,111.11'.fromCurrency().should.be.a('Number');
+      inputCurrency.fromCurrency().should.be.a('Number');
     });
     it('should return the number representation of a currency string', () => {
-      '1,111.11'.fromCurrency().should.equal(111111);
+      result = 111111;
+      inputCurrency.fromCurrency().should.equal(result);
     });
   });
 
   describe('inverseCase', () => {
     it('should return a String', () => {
-      'Mr Ben'.inverseCase().should.be.a('String');
+      testPhrase.inverseCase().should.be.a('String');
     });
     it('should return the inverseCase for an input string', () => {
-      'Mr Ben'.inverseCase().should.equal('mR bEN');
+      result = 'HELLO woRLD';
+      testPhrase.inverseCase().should.equal(result);
     });
     it('should work with symbols within the String', () => {
-      'Mr B&en'.inverseCase().should.equal('mR b&EN');
+      const withSymbol = `${testPhrase}&Oh`;
+      result = 'HELLO woRLD&oH';
+      withSymbol.inverseCase().should.equal(result);
     });
   });
 
   describe('alternatingCase', () => {
     it('should return a String', () => {
-      'Onomatopoeia'.alternatingCase().should.be.a('String');
+      testPhrase.alternatingCase().should.be.a('String');
     });
     it('should return alternating case for a string"', () => {
-      'Onomatopoeia'.alternatingCase().should.equal('oNoMaToPoEiA');
+      result = 'hElLo wOrLd';
+      testPhrase.alternatingCase().should.equal(result);
     });
   });
 
   describe('getMiddle', () => {
     it('should return a String', () => {
-      'Onomatopoeia'.getMiddle().should.be.a('String');
+      testPhrase.getMiddle().should.be.a('String');
     });
     it('should return the middle letter for an odd numbered String', () => {
-      'read'.getMiddle().should.equal('ea');
+      const testWords = `${testPhrase} Today`;
+      result = 'r';
+      testWords.getMiddle().should.equal(result);
     });
     it('should return the middle letters for an even numbered String', () => {
-      'reads'.getMiddle().should.equal('a');
+      const testWords = `${testPhrase} Today!`;
+      result = 'rl';
+      testWords.getMiddle().should.equal(result);
     });
   });
 
   describe('numberWords', () => {
+    const testValue = '123';
+    const outputValue = 'one two three';
     it('should return a String', () => {
-      '123'.numberWords().should.be.a('String');
+      testValue.numberWords().should.be.a('String');
     });
     it('should return the number in words', () => {
-      '123'.numberWords().should.equal('one two three');
+      testValue.numberWords().should.equal(outputValue);
     });
   });
 
   describe('isDigit', () => {
+    const validDigit = '2';
+    const invalidDigit = '23';
     it('should return a boolean', () => {
-      '23'.isDigit().should.be.a('boolean');
+      validDigit.isDigit().should.be.a('boolean');
     });
     it('should return †rue for a digit', () => {
-      '3'.isDigit().should.be.true;
+      validDigit.isDigit().should.be.true;
     });
     it('should return false for non digit', () => {
-      '23'.isDigit().should.be.false;
+      invalidDigit.isDigit().should.be.false;
     });
   });
 
   describe('doubleCheck', () => {
     it('should return a boolean', () => {
-      'reader'.doubleCheck().should.be.a('boolean');
+      testPhrase.doubleCheck().should.be.a('boolean');
     });
     it('should return †rue if string contains double characters', () => {
-      'grool'.doubleCheck().should.be.true;
+      testPhrase.doubleCheck().should.be.true;
     });
-    it('should return false if string doesn\'t contains double characters', () => {
-      'grow'.doubleCheck().should.be.false;
+    it('should return false for string without double characters', () => {
+      const invalidValue = 'Helo World';
+      invalidValue.doubleCheck().should.be.false;
     });
     it('should return true if string contains double whitespace', () => {
-      'read it  now'.doubleCheck().should.be.true;
+      const validValue = 'read it  now';
+      validValue.doubleCheck().should.be.true;
     });
   });
-
 });

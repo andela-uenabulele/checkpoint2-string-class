@@ -25,9 +25,9 @@ const stringClassExtension = {
    * @returns {String} The lowercase representation of the input string
    */
   toLower() {
-    const lowerRegex =/[A-Z]/g;
+    const lowerRegex = /[A-Z]/g;
     return this.replace(lowerRegex, letter =>
-      String.fromCharCode(letter.charCodeAt() + 32))
+      String.fromCharCode(letter.charCodeAt() + 32));
   },
 
   /**
@@ -53,7 +53,7 @@ const stringClassExtension = {
    * @returns {Array} The words in the string
    */
   words() {
-    const wordsRegex = new RegExp(/[\w\'-]+/, 'g');
+    const wordsRegex = new RegExp(/[\w'-]+/, 'g');
     return this.match(wordsRegex);
   },
 
@@ -72,9 +72,9 @@ const stringClassExtension = {
   toCurrency() {
     const validator = /\.$/;
     const currencyRegex = /^\d+(\.)?\d+$/;
-    const dotCheckerRegex = /[\.]/;
+    const dotCheckerRegex = /[.]/;
     let inputValue = this;
-    let roundedValue;
+
 
     if (validator.test(inputValue)) {
       inputValue = `${this}00`;
@@ -88,7 +88,7 @@ const stringClassExtension = {
       inputValue = `${inputValue}.00`;
     }
 
-    roundedValue = Number(inputValue).toFixed(2);
+    const roundedValue = Number(inputValue).toFixed(2);
     return roundedValue.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   },
 
@@ -99,7 +99,7 @@ const stringClassExtension = {
   fromCurrency() {
     const fromCurrencyRegex = /[^0-9]/g;
     const result = Number(this.replace(fromCurrencyRegex, ''));
-    if (result == 0) return "Invalid Input!"
+    if (result === 0) return 'Invalid Input!';
     return result;
   },
 
@@ -112,8 +112,8 @@ const stringClassExtension = {
   inverseCase() {
     const inverseCaseRegex = /\w/g;
     const lowercaseRegex = /[a-z]/;
-    let inputData = this;
-    return inputData.replace(inverseCaseRegex, letter => {
+    const inputData = this;
+    return inputData.replace(inverseCaseRegex, (letter) => {
       if (lowercaseRegex.test(letter)) return letter.toUpper();
       return letter.toLower();
     });
@@ -126,9 +126,9 @@ const stringClassExtension = {
    * @returns {String} an alternating case representative of the string
    */
   alternatingCase() {
-    const alternatingCaseRegex = /\w/g
+    const alternatingCaseRegex = /\w/g;
     return this.replace(alternatingCaseRegex, (letter, index) => {
-      if (index % 2 == 0) return letter.toLower();
+      if (index % 2 === 0) return letter.toLower();
       return letter.toUpper();
     });
   },
@@ -139,7 +139,7 @@ const stringClassExtension = {
    */
   getMiddle() {
     const midPoint = Math.floor(this.length / 2);
-    if (this.length % 2) return this.substr(midPoint, 1)
+    if (this.length % 2) return this.substr(midPoint, 1);
     return this.substr(midPoint - 1, 2);
   },
 
@@ -148,8 +148,8 @@ const stringClassExtension = {
    * @returns {String} each Digit in words
    */
   numberWords() {
-    const numberWordsRegex = /\d/g;
-    let inWords = [
+    const checker = /\d/g;
+    const inWords = [
       'zero',
       'one',
       'two',
@@ -162,7 +162,7 @@ const stringClassExtension = {
       'nine',
       'ten'
     ];
-    return this.replace(numberWordsRegex, letter => `${inWords[letter]} `).trim();
+    return this.replace(checker, letter => `${inWords[letter]} `).trim();
   },
 
   /**
@@ -184,7 +184,7 @@ const stringClassExtension = {
     return doubleCheckRegex.test(this);
   }
 
-}
+};
 /**
  * Appends the created variable to the String Prototype
  */
