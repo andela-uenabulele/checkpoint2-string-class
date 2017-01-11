@@ -3,16 +3,16 @@ const wiredep = require('wiredep').stream;
 const browserSync = require('browser-sync').create();
 const bower = require('gulp-bower');
 
-gulp.task('default', ['run-app','watcher']);
+gulp.task('default', ['run-app', 'watcher']);
 
 gulp.task('watcher', () => {
-gulp.watch(['src/string.js'], ['serve-src', 'reload-app']);
-gulp.watch(['bower.json'],['inject-vendor','reload-app']);
+  gulp.watch(['src/string.js'], ['serve-src', 'reload-app']);
+  gulp.watch(['bower.json'], ['inject-vendor', 'reload-app']);
 });
 
-gulp.task('inject-vendor',['bower'], function () {
-gulp.src('public/index.html')
-.pipe(wiredep({directory: 'public/lib'}))
+gulp.task('inject-vendor', ['bower'], () => {
+  gulp.src('public/index.html')
+.pipe(wiredep({ directory: 'public/lib' }))
 .pipe(gulp.dest('public'));
 });
 
@@ -22,9 +22,9 @@ gulp.task('bower', () => bower({
   verbosity: 2
 }));
 
-gulp.task('serve-src', ()=>{
-gulp.src('src/string.js')
-.pipe(gulp.dest('public'))
+gulp.task('serve-src', () => {
+  gulp.src('src/string.js')
+.pipe(gulp.dest('public'));
 });
 
 gulp.task('run-app', () => {
@@ -38,6 +38,6 @@ gulp.task('run-app', () => {
   });
 });
 
-gulp.task('reload-app', ()=>{
-browserSync.reload();
+gulp.task('reload-app', () => {
+  browserSync.reload();
 });
