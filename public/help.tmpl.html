@@ -1,193 +1,104 @@
-<md-dialog aria-label="String Class Extension Help">
-    <form ng-cloak>
-        <md-toolbar class="modal-title-bar">
-            <div class="md-toolbar-tools">
-                <h2>String Class Extension Help</h2>
-                <span flex></span>
-                <md-button class="md-icon-button" ng-click="cancel()">
-                    <md-icon >
-                        <i class="fa fa-times" aria-label="Close dialog"></i>
-                    </md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
+<!DOCTYPE html>
+<html>
 
-        <md-dialog-content>
-            <div class="md-dialog-content">
-                <h2>Actions and what they do</h2>
-                <table>
-                    <thead>
-                        <th>Actions(Return Type)</th>
-                        <th>Description</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <strong>hasVowels
-                                    <br/>(typeof Boolean):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns true if the string contains vowels. This method must implement Regular Expression.
-                            </td>
-                        </tr>
+<head>
+  <title></title>
+</head>
 
-                        <tr>
-                            <td>
-                                <strong>toUpper
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the String in question but with all characters in upper cases as applicable. This method should be implemented without the use of the toUpperCase internal methods.
-                            </td>
-                        </tr>
+<body>
+  <form>
+    <div class="md-toolbar-tools">
+      <h2>String Class Extension Help</h2><span></span> <i aria-label="Close dialog" class="fa fa-times"></i>
+    </div>
+    <div class="md-dialog-content">
+      <h2>Actions and what they do</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Actions(Return Type)</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>hasVowels<br>
+            (typeof Boolean):</strong></td>
+            <td>Returns true if the string contains vowels. This method must implement Regular Expression.</td>
+          </tr>
+          <tr>
+            <td><strong>toUpper<br>
+            (typeof String):</strong></td>
+            <td>Returns the String in question but with all characters in upper cases as applicable. This method should be implemented without the use of the toUpperCase internal methods.</td>
+          </tr>
+          <tr>
+            <td><strong>toLower<br>
+            (typeof String):</strong></td>
+            <td>Returns the String in question but with all characters in their lower cases as applicable. This method should be implemented without the use of the toLowerCase internal methods.</td>
+          </tr>
+          <tr>
+            <td><strong>ucFirst<br>
+            (typeof String):</strong></td>
+            <td>Returns the String in question but changes the First Character to an Upper case. Make use of your toUpper method above to implement this method or a one-liner.</td>
+          </tr>
+          <tr>
+            <td><strong>isQuestion<br>
+            (typeof Boolean):</strong></td>
+            <td>Return true if the string is a question (ending with a question mark). This method must implement Regular Expression.</td>
+          </tr>
+          <tr>
+            <td><strong>words<br>
+            (typeof Object, instanceof Array):</strong></td>
+            <td>Returns a list of the words in the string, as an Array. This method must implement Regular Expression.</td>
+          </tr>
+          <tr>
+            <td><strong>wordCount<br>
+            (typeof Number):</strong></td>
+            <td>Returns the number of words in the string. It must make use of the words method above.</td>
+          </tr>
+          <tr>
+            <td><strong>toCurrency<br>
+            (typeof String):</strong></td>
+            <td>Returns a currency representation of the String e.g 11111.11 should be represented as 11,111.11.</td>
+          </tr>
+          <tr>
+            <td><strong>fromCurrency<br>
+            (typeof Number):</strong></td>
+            <td>Returns a number representation of the Currency String e.g 11,111.11 should return 11111.11</td>
+          </tr>
+          <tr>
+            <td><strong>inverseCase<br>
+            (typeof String):</strong></td>
+            <td>Returns each letter in the string as an inverse of its current case e.g Mr. Ben should return mR. bEN.</td>
+          </tr>
+          <tr>
+            <td><strong>alternatingCase<br>
+            (typeof String):</strong></td>
+            <td>Returns the letters in alternating cases. It must start with a lower case e.g Onomatopoeia should return oNoMaToPoEiA.</td>
+          </tr>
+          <tr>
+            <td><strong>getMiddle<br>
+            (typeof String):</strong></td>
+            <td>Returns the character(s) in the middle of the string e.g read should return ea and reads should return a.</td>
+          </tr>
+          <tr>
+            <td><strong>numberWords<br>
+            (typeof String):</strong></td>
+            <td>Returns the numbers in words e.g 325 should return three two five.</td>
+          </tr>
+          <tr>
+            <td><strong>isDigit<br>
+            (typeof Boolean):</strong></td>
+            <td>Returns true if the string is a digit(one number) e.g 3 should return true and 34 should return false. This method must implement Regular Expression.</td>
+          </tr>
+          <tr>
+            <td><strong>doubleCheck<br>
+            (typeof Boolean):</strong></td>
+            <td>Returns true if a string contains double characters(including whitespace character) e.g aa, !!, should return true.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</body>
 
-                        <tr>
-                            <td>
-                                <strong>toLower
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the String in question but with all characters in their lower cases as applicable. This method should be implemented without the use of the toLowerCase internal methods.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>ucFirst
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the String in question but changes the First Character to an Upper case. Make use of your toUpper method above to implement this method or a one-liner.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>isQuestion
-                                    <br/>(typeof Boolean):
-                                </strong>
-                            </td>
-                            <td>
-                                Return true if the string is a question (ending with a question mark). This method must implement Regular Expression.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>words
-                                    <br/>(typeof Object, instanceof Array):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns a list of the words in the string, as an Array. This method must implement Regular Expression.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>wordCount
-                                    <br/>(typeof Number):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the number of words in the string. It must make use of the words method above.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>toCurrency
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns a currency representation of the String e.g 11111.11 should be represented as 11,111.11.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>fromCurrency
-                                    <br/>(typeof Number):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns a number representation of the Currency String e.g 11,111.11 should return 11111.11
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>inverseCase
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns each letter in the string as an inverse of its current case e.g Mr. Ben should return mR. bEN.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>alternatingCase
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the letters in alternating cases. It must start with a lower case e.g Onomatopoeia should return oNoMaToPoEiA.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>getMiddle
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the character(s) in the middle of the string e.g read should return ea and reads should return a.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>numberWords
-                                    <br/>(typeof String):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns the numbers in words e.g 325 should return three two five.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>isDigit
-                                    <br/>(typeof Boolean):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns true if the string is a digit(one number) e.g 3 should return true and 34 should return false. This method must implement Regular Expression.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <strong>doubleCheck
-                                    <br/>(typeof Boolean):
-                                </strong>
-                            </td>
-                            <td>
-                                Returns true if a string contains double characters(including whitespace character) e.g aa, !!, should return true.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </md-dialog-content>
-    </form>
-</md-dialog>
+</html>
