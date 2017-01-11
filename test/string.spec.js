@@ -82,6 +82,12 @@ describe('String Class Extension', () => {
     it('should return false if it doesn\'t end with a question mark(?)', () => {
       testPhrase.isQuestion().should.be.false;
     });
+    it('should return false for an invalid question', () => {
+      const invalidQuestions = ['???', '$%^#*@*@?', 'r?sd'];
+      invalidQuestions[0].isQuestion().should.be.false;
+      invalidQuestions[1].isQuestion().should.be.false;
+      invalidQuestions[2].isQuestion().should.be.false;
+    });
     it('should return false if a question mark not at the end', () => {
       questionBetween.isQuestion().should.be.false;
     });

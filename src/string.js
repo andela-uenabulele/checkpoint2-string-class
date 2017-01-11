@@ -44,7 +44,7 @@ const stringClassExtension = {
    * @returns {boolean} true if it is a question
    */
   isQuestion() {
-    const isquestionRegex = /\?$/;
+    const isquestionRegex = /^[\w]+([. \w]+)?\?$/;
     return isquestionRegex.test(this.trim());
   },
 
@@ -74,7 +74,6 @@ const stringClassExtension = {
     const currencyRegex = /^\d+(\.)?\d+$/;
     const dotCheckerRegex = /[.]/;
     let inputValue = this;
-
 
     if (validator.test(inputValue)) {
       inputValue = `${this}00`;
