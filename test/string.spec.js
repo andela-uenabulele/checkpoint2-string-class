@@ -3,6 +3,7 @@ require('../src/string');
 const chai = require('chai');
 
 const should = chai.should();
+const assert = chai.assert;
 
 
 describe('String Class Extension', () => {
@@ -129,8 +130,13 @@ describe('String Class Extension', () => {
     it('should return an error message for invalid input', () => {
       currency = ['11s11.11', '1111.11.11'];
       result = '111,511.00';
-      currency[0].toCurrency().should.equal('Invalid Input!');
-      currency[1].toCurrency().should.equal('Invalid Input!');
+      (() => {
+        currency[0].toCurrency();
+      }).should.throw(TypeError);
+      (() => {
+        currency[1].toCurrency();
+      }).should.throw(TypeError);
+      // assert.throws('helloo'.toCurrency, TypeError);
     });
     it('should return the currency value of a string without a "."', () => {
       currency = '111511';

@@ -80,7 +80,7 @@ const stringClassExtension = {
     }
 
     if (!currencyRegex.test(inputValue)) {
-      return 'Invalid Input!';
+      throw new TypeError('Invalid Currency Format');
     }
 
     if (!dotCheckerRegex.test(inputValue)) {
@@ -98,7 +98,7 @@ const stringClassExtension = {
   fromCurrency() {
     const fromCurrencyRegex = /[^0-9]/g;
     const result = Number(this.replace(fromCurrencyRegex, ''));
-    if (result === 0) return 'Invalid Input!';
+    if (result === 0) throw new TypeError('Invalid Currency Value');
     return result;
   },
 
