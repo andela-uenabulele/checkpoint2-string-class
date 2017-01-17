@@ -130,8 +130,12 @@ describe('String Class Extension', () => {
     it('should return an error message for invalid input', () => {
       currency = ['11s11.11', '1111.11.11'];
       result = '111,511.00';
-      (function(){currency[0].toCurrency()}).should.throw(TypeError);
-      (function(){currency[1].toCurrency()}).should.throw(TypeError);
+      (() => {
+        currency[0].toCurrency();
+      }).should.throw(TypeError);
+      (() => {
+        currency[1].toCurrency();
+      }).should.throw(TypeError);
       // assert.throws('helloo'.toCurrency, TypeError);
     });
     it('should return the currency value of a string without a "."', () => {
