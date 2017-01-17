@@ -47,7 +47,12 @@ angular.module('stringClass', ['ngMaterial', 'ngTagsInput'])
       $scope.theResults = [];
       $scope.actions.forEach((action) => {
         let label = action.text;
-        let value = $scope.stringToConvert[label]();
+        let value;
+        try {
+          value = $scope.stringToConvert[label]();
+        } catch (err) {
+          value = err.message;
+        }
         $scope.theResults.push({
           label,
           value
