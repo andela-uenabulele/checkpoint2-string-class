@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- bower:css -->
+  <link rel='stylesheet' href='lib/angular-material/angular-material.css' />
+  <link rel='stylesheet' href='lib/components-font-awesome/css/font-awesome.css' />
+  <link rel='stylesheet' href='lib/ng-tags-input/ng-tags-input.css' />
+  <!-- endbower -->
+
+  <!-- custom: css and font -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+  <!-- end custom: css and font -->
+</head>
+
+<body>
+  <div class="" ng-app="stringClass">
+    <div class="container" ng-controller="StringClassController">
+      <div layout="column" layout-align="center center" class="sub-wrapper">
+        <div class="header-title ">
+          stringClass.<span class="header-extension">extension</span>
+        </div>
+        <div class="header-subtitle">
+          - do more with strings -
+        </div>
+        <div flex="50" class="main-view">
+          <md-card class="card-container">
+            <md-input-container ng-form name="myForm" class="md-icon-float">
+              <label>Enter a String</label>
+              <input name="itemToConvert" id="stringInput" ng-change="callAction()" ng-model="stringToConvert" type="text" ng-change="processHtmlCode()" />
+              <md-icon id="pasteIcon">
+                <md-tooltip>Click and Press ctrl + V(win) or cmd + V(mac) to Paste
+                </md-tooltip>
+                <i class="fa fa-clipboard btn"></i>
+              </md-icon>
+            </md-input-container>
+            <tags-input placeholder="Click to add an action" ng-model="actions" on-tag-added="callAction()" on-tag-removed="callAction()">
+              <auto-complete max-results-to-show="20" select-first-match="true" min-length="0" load-on-focus="true" load-on-empty="true" source="loadActions($query)"></auto-complete>
+              <md-icon class="action-help" ng-click="showModal($event)">
+                <md-tooltip>Help
+                </md-tooltip>
+                <i class="fa fa-question btn"></i>
+              </md-icon>
+            </tags-input>
+            <div class="">
+              <p ng-if="theResults !=undefined || theResults !=[]" class="md-headline">RESULTS</p>
+            </div>
+            <md-input-container ng-repeat="result in theResults" class="md-icon-float">
+              <label>{{result.label}}</label>
+              <input id={{result.label}} ng-model="result.value" type="text">
+              <md-icon>
+                <i class="fa fa-files-o" data-clipboard-target="#{{result.label}}"></i>
+              </md-icon>
+            </md-input-container>
+          </md-card>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- bower:js -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-animate/angular-animate.js"></script>
+  <script src="lib/angular-aria/angular-aria.js"></script>
+  <script src="lib/angular-messages/angular-messages.js"></script>
+  <script src="lib/angular-material/angular-material.js"></script>
+  <script src="lib/ng-tags-input/ng-tags-input.js"></script>
+  <script src="lib/clipboard/dist/clipboard.js"></script>
+  <!-- endbower -->
+  <!-- custom: js -->
+  <script type="text/javascript" src="string.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+  <script type="text/javascript" src="ClipboardConfig.js"></script>
+  <!-- end custom: js -->
+
+</body>
+
+</html>
