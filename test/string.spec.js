@@ -136,7 +136,6 @@ describe('String Class Extension', () => {
       (() => {
         currency[1].toCurrency();
       }).should.throw(TypeError);
-      // assert.throws('helloo'.toCurrency, TypeError);
     });
     it('should return the currency value of a string without a "."', () => {
       currency = '111511';
